@@ -1,0 +1,148 @@
+/* ============================================================
+   card-winners.css — WINNERS announcement EXTENSIONS only.
+   Loaded AFTER card-brand.css. Reuses every brand font / color /
+   logo treatment from card-brand.css. .wordmark (Archivo Black,
+   the ONE hero per card) carries "WINNERS" itself — no new hero
+   class needed. This file adds ONLY the results-specific pieces:
+   the context eyebrow, place chips + podium row, the bounty
+   caption line, and the variant-B results board.
+   ============================================================ */
+
+/* Context eyebrow — spaced caps, DIM neutral grey (matches the
+   judge/hacker eyebrow). Establishes "Embodied Metal Hackathon"
+   above the bare word WINNERS, which is unreadable alone. */
+.eyebrow{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--sponsor-label);
+}
+.eyebrow .dot{ opacity:0.5; margin:0 0.5em; }
+
+/* ============================================================
+   VARIANT A — PODIUM ROW
+   Three place-items in rank order. Hierarchy is carried by SIZE
+   and the 1st-place chip fill, not by inventing gold/silver/bronze
+   colors outside the palette.
+   ============================================================ */
+.podium{ display:flex; align-items:flex-end; }
+.place-item{ display:flex; flex-direction:column; align-items:flex-start; }
+
+.place-chip{
+  font-family:'Archivo Black',sans-serif;
+  font-weight:400;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  display:inline-block;
+  width:fit-content;
+}
+/* 1st: solid green fill, dark ink text — the one filled chip on the card */
+.place-item.rank-1 .place-chip{
+  background:var(--green);
+  color:var(--bg);
+}
+/* 2nd / 3rd: outlined, green text, faint fill — same accent, quieter */
+.place-item.rank-2 .place-chip,
+.place-item.rank-3 .place-chip{
+  background:rgba(70,224,122,0.09);
+  border:1px solid var(--dim);
+  color:var(--green);
+}
+
+.place-team{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  color:var(--cream);
+  line-height:1.05;
+}
+
+/* Rerun bounties — compact secondary line under the podium.
+   Dim label, cream team names carry the read. */
+.bounty-line{
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  color:var(--sponsor-label);
+  letter-spacing:0.01em;
+}
+.bounty-line .lbl{
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--sponsor-label);
+}
+.bounty-line b{
+  font-weight:600;
+  color:var(--ink);
+}
+.bounty-line .sep{ color:var(--dim); margin:0 0.5em; }
+/* each "Team — Track" pair is an atomic unit: a line break may only land
+   between items (at the .sep), never inside a team name. */
+.bounty-line .bounty-item{ display:inline-block; white-space:nowrap; }
+
+/* ============================================================
+   VARIANT B — RESULTS BOARD (editorial, all six awards + amounts)
+   ============================================================ */
+.board{ display:flex; }
+.board-col + .board-col{ border-left:1px solid var(--line); }
+.board-label{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--sponsor-label);
+}
+.board-row{
+  display:flex; align-items:baseline; justify-content:space-between;
+  border-bottom:1px solid var(--line);
+}
+.board-row:last-child{ border-bottom:none; }
+/* stacked variant — for narrower columns (square canvas) where team name
+   + amount side-by-side would wrap. Amount drops under the team name as
+   a caption instead of competing for the same line. */
+.board-row.stacked{ align-items:flex-start; }
+.board-row.stacked .board-team{ display:block; }
+.board-info{ display:flex; flex-direction:column; flex:1; }
+.board-row.stacked .board-amount{
+  text-align:left; white-space:normal; margin-top:3px; font-weight:500;
+}
+.board-rank{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--green);
+  white-space:nowrap;
+}
+.board-team{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  color:var(--cream);
+  flex:1;
+}
+.board-amount{
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  color:var(--green);
+  white-space:nowrap;
+  text-align:right;
+}
+.board-sub{
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  color:var(--sponsor-label);
+}
+
+/* dedicated bottom band — hairline rule, date LEFT | sponsor strip RIGHT.
+   Same device as the announce card's .footer; no Apply CTA on a results
+   card, so the date fills the left slot instead. */
+.winners-footer{
+  margin-top:auto;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  border-top:1px solid var(--line);
+}
+.winners-when{
+  font-family:'Inter',sans-serif;
+  font-weight:500;
+  letter-spacing:0.01em;
+  color:var(--ink);
+}

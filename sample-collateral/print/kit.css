@@ -1,0 +1,184 @@
+/* Embodied Metal — weekend signage kit. Shared print system.
+   One visual language: black band + dot-matrix hallmark + Instrument Serif wordmark,
+   condensed uppercase headline, hazard stripe where safety is real,
+   monospace footer with sign ID, one AprilTag per sign in the band's right corner. */
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(assets/instrument-serif.woff2) format('woff2');
+}
+/* Inter (collateral labels/wordmarks) + Archivo Black (collateral hero) — local for print */
+@font-face { font-family:'Inter'; font-style:normal; font-weight:400; font-display:block; src:url(assets/inter-400.woff2) format('woff2'); }
+@font-face { font-family:'Inter'; font-style:normal; font-weight:500; font-display:block; src:url(assets/inter-500.woff2) format('woff2'); }
+@font-face { font-family:'Inter'; font-style:normal; font-weight:600; font-display:block; src:url(assets/inter-600.woff2) format('woff2'); }
+@font-face { font-family:'Archivo Black'; font-style:normal; font-weight:400; font-display:block; src:url(assets/archivo-400.woff2) format('woff2'); }
+
+:root {
+  --tape: #f5c518;
+  --black: #17181a;
+  --white: #fdfdfb;
+  --paper: #fdfdfb;
+  --ink-soft: #45464a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+
+body {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--black);
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- page sizes (full-bleed background; content held inside padding = safe margin) ---- */
+body.s1117 { width: 11in;  height: 17in; padding: 0.85in 0.9in 0.7in; }
+body.s85   { width: 8.5in; height: 11in; padding: 0.72in 0.78in 0.6in; }
+
+/* ---- color themes ---- */
+body.dark   { background: var(--black); color: var(--white); }
+body.yellow { background: var(--tape);  color: var(--black); }
+
+/* green accent (Mission Robotics accent #4ADE80): overrides the band underline.
+   Compound selector beats the later `body.dark .band` rule on specificity. */
+body.dark.green-accent .band,
+body.green-accent .band { border-bottom-color: #4ADE80; }
+
+/* co-host masthead (S01): keep the MR dots+wordmark exactly, then × savant.
+   The whole lockup sits on one optical line via align-items:center. */
+.hosts { display: flex; align-items: center; gap: 0.28in; }
+.hostx { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+  color: #4ADE80; font-size: 30pt; line-height: 1; }
+.cohost { display: flex; align-items: center; gap: 0.14in; }
+.cohost img.savant-glyph { height: 0.52in; width: auto; display: block; }
+.cohost .savant-name { font-family: 'Inter', sans-serif; font-weight: 500;
+  text-transform: lowercase; color: var(--white); font-size: 23pt; letter-spacing: 0; }
+
+/* ---- brand hero (S16): pure brand moment, no band/tag/footer ---- */
+body.brand {
+  align-items: center; justify-content: center; text-align: center; gap: 0.55in;
+}
+body.brand .mark { width: 3.6in; height: 3.6in; display: block; }
+body.brand .wordmark-hero {
+  font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+  font-size: 96pt; line-height: 0.98; letter-spacing: 0.01em; color: var(--white);
+}
+
+/* ---- band ---- */
+.band {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.2in;
+  padding-bottom: 0.2in; border-bottom: 3px solid var(--black);
+  margin-bottom: 0.5in; flex: none;
+}
+body.dark   .band { border-bottom-color: var(--tape); }
+body.yellow .band { border-bottom-color: var(--black); }
+.brand { display: flex; align-items: center; gap: 0.14in; }
+.dots  { width: 0.54in; height: 0.54in; display: block; }
+.bt {
+  font-family: 'Instrument Serif', Georgia, serif; font-weight: 400;
+  font-size: 27pt; line-height: 0.96; letter-spacing: 0.01em;
+}
+.tag {
+  width: 0.64in; height: 0.64in; image-rendering: pixelated; image-rendering: crisp-edges;
+  background: #fff; padding: 0.055in; border-radius: 2px; display: block;
+}
+
+/* smaller band on letter-size sheets */
+body.s85 .dots { width: 0.44in; height: 0.44in; }
+body.s85 .bt   { font-size: 22pt; }
+body.s85 .tag  { width: 0.52in; height: 0.52in; }
+body.s85 .band { margin-bottom: 0.4in; }
+
+/* ---- content column ---- */
+.grow {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.3in;
+}
+.big {
+  font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700; text-transform: uppercase; line-height: 0.92; letter-spacing: 0.006em;
+}
+.sm {
+  font-size: 15pt; line-height: 1.42; color: var(--ink-soft);
+  font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+body.s1117 .sm { font-size: 17pt; }
+body.dark   .sm { color: #c6c8cd; }
+body.yellow .sm { color: #4d4207; }
+.sm b { font-weight: 600; color: inherit; }
+body.light-strong .sm b, body.s85 .sm b { color: var(--black); }
+.mono { font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+.arrow { line-height: 0.9; font-weight: 700;
+  font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif; }
+
+/* ---- hazard stripe (safety-relevant signs only) ---- */
+.hz {
+  height: 0.24in; flex: none; border-radius: 2px;
+  background: repeating-linear-gradient(-45deg, var(--tape) 0 0.22in, var(--black) 0.22in 0.44in);
+}
+
+/* ---- footer ---- */
+.footrow {
+  margin-top: auto; padding-top: 0.18in; border-top: 1px solid #d8d7d1;
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: 10.5pt; letter-spacing: 0.06em; color: #85868a;
+  display: flex; justify-content: space-between; gap: 0.3in; flex: none;
+}
+body.s1117 .footrow { font-size: 12pt; }
+body.dark   .footrow { border-top-color: #33343a; color: #8a8c92; }
+body.yellow .footrow { border-top-color: rgba(23,24,26,0.28); color: #6b5b0d; }
+
+/* ---- placeholder chip (unshippable-until-filled) ---- */
+.tk {
+  background: var(--tape); color: var(--black);
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-weight: 700; padding: 0.03in 0.14in; border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(23,24,26,0.9); white-space: nowrap;
+}
+
+/* ---- QR ---- */
+.qrbox {
+  background: #fff; border: 3px solid var(--black); border-radius: 8px;
+  padding: 0.16in; align-self: center;
+}
+.qrbox img { display: block; width: 100%; height: auto; image-rendering: auto; }
+
+/* ---- sponsor slate (S15) ---- */
+.slate { display: flex; flex-direction: column; gap: 0.34in; }
+.slate .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5in; }
+.wordmark {
+  font-family: "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em;
+  line-height: 1; color: var(--black);
+}
+
+/* ---- fold-in-half table tents (S03, S12): portrait letter sheet, horizontal mid-fold,
+        top panel rotated 180 so both faces read upright when tented. ---- */
+body.tent { width: 8.5in; height: 11in; padding: 0; display: block; background: var(--white); }
+.tent .half {
+  width: 8.5in; height: 5.5in; padding: 0.5in 0.62in 0.42in;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  background: var(--paper);
+}
+.tent .half.top { transform: rotate(180deg); }
+.tent .half.dark { background: var(--black); color: var(--white); }
+.tent .foldline {
+  position: absolute; left: 0.4in; right: 0.4in; top: 5.5in;
+  border-top: 1.5px dashed #b7b7b2; z-index: 5;
+}
+.tent .foldnote {
+  position: absolute; top: 5.5in; left: 50%; transform: translate(-50%, -50%);
+  background: #fff; padding: 0 0.1in; font-family: "SF Mono", ui-monospace, monospace;
+  font-size: 8pt; letter-spacing: 0.12em; color: #b0b0aa; z-index: 6;
+}
+.tent .dots { width: 0.42in; height: 0.42in; }
+.tent .bt { font-size: 19pt; }
+.tent .tag { width: 0.48in; height: 0.48in; }
+.tent .band { margin-bottom: 0.3in; padding-bottom: 0.14in; }
+.tent .sm { font-size: 15pt; }
+.tent .footrow { font-size: 10pt; }

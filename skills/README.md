@@ -2,13 +2,13 @@
 
 Packaged agent skills for the tools in [`tools.md`](../tools.md), so an AI agent working alongside an event host can operate the stack directly. Roadmap-first: each skill gets built by extracting what we actually did with the tool at a real event, not by wrapping API docs.
 
-## Planned
+## Built
 
-### luma
-Registration operations as an agent skill: approval-pass triage (approve/waitlist/decline against event criteria), funnel snapshots (approved/pending/waitlist counts logged on a cadence — these are unrecoverable after the event), guest-list pulls for door lists and post-event sweeps, blast timing. Built from: running an approval-gated 340+-registration event where the pre-event snapshot and the door list both turned out to matter after the fact.
+### [tally/](tally/)
+Forms as part of an agentic stack, not just a form builder. First play shipped: `notification-verify` — a scripted audit that confirms every event form's submission notifications actually reach a monitored inbox, before doors open. Built from the failure we hit: a submission form whose notifications reached no monitored inbox — the data existed only behind the dashboard login until someone thought to look, days later. `form-staging` (create/configure forms via the API) and `submissions-pull` (programmatic export) are planned there next, once a Tally API key exists.
 
-### tally
-Forms as part of an agentic stack, not just a form builder: create/configure event forms (project submission, intake, prize fulfillment) via the API, **verify notification routing end-to-end before doors** (the failure we hit: a submission form whose notifications reached no monitored inbox — the data existed only behind the dashboard login until someone thought to look), pull submissions programmatically for tag maps, judging support, and results reconciliation.
+### [luma/](luma/README.md)
+Registration operations as an agent skill, play by play. First play shipped: `funnel-snapshot` — approved/pending/waitlist/declined/invited counts logged to a dated, citable CSV row on a cadence (daily during promo, mandatory day-before, morning-of, pre-doors final), because the numbers are unrecoverable once statuses change. Built from running an approval-gated 340+-registration event where the pre-event snapshot and the door list both turned out to matter after the fact. `curation-pass` (approval triage), `attendee-dossier`, `blast-staging`, and `event-staging` are planned there next.
 
 ## The bar for adding a skill here
 
