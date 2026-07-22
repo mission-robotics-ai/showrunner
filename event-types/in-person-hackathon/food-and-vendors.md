@@ -10,28 +10,30 @@ What we actually ordered for a 3-day robotics hackathon with ~70–80 hackers on
 
 All orders placed the Wednesday before; deliveries spread across the event days. Same-day grocery delivery (Instacart/Costco, Safeway) means no truck, no pickup runs, no minimums negotiations.
 
+Exact itemized orders: [orders.md](orders.md)
+
 ### Base load — arrival day, before doors
 | What | Vendor | Order shape | ~Cost |
 |---|---|---|---|
-| Drinks + snacks base | Costco via Instacart | Sparkling water variety (Spindrift/La Croix class), sodas, chips, muffins/croissants/pastries, coffee, oat milk, paper plates | ~$385 |
-| Kickoff-evening spread | Safeway delivery | Cheese/deli/fruit trays, crackers, teas, sparkling water, a couple cases of beer, plates/cutlery/napkins | ~$560 |
-| Serving gear (buy once) | Amazon | Coffee cups, tongs, salad bowls, serving knives, cutting boards, electric kettle | ~$100 |
+| Drinks + snacks base | Costco via Instacart ([costco.com/same-day](https://www.costco.com/same-day) / [instacart.com](https://www.instacart.com)) | Sparkling water variety (Spindrift/La Croix class), sodas, chips, muffins/croissants/pastries, coffee, oat milk, paper plates | ~$385 |
+| Kickoff-evening spread | Safeway delivery ([safeway.com](https://www.safeway.com)) | Cheese/deli/fruit trays, crackers, teas, sparkling water, a couple cases of beer, plates/cutlery/napkins | ~$560 |
+| Serving gear (buy once) | Amazon ([amazon.com](https://www.amazon.com)) | Coffee cups, tongs, salad bowls, serving knives, cutting boards, electric kettle | ~$100 |
 
 *Why a spread and not a meal on night one: kickoff evening is team formation and robot claiming — people graze and move. Trays beat plates.*
 
 ### Full build day
 | What | Vendor | Order shape | ~Cost |
 |---|---|---|---|
-| Breakfast | Noah's Bagels (catering delivery) | 2+ dozen bagels & shmear + group coffee boxes | ~$300 |
-| Lunch restock | Costco via Instacart | Chicken wraps, sandwich platters, salads, hummus + pita, salsa/guac, fruit, cookies, foil pans | ~$570 |
-| Dinner | Local pizza shop (ours: 17 XL 18" pies) | Ratio that worked: ~1/3 cheese, ~1/5 margherita, ~1/2 pepperoni. One XL per 4–5 people | ~$620 |
+| Breakfast | Noah's Bagels catering (ordered via [ezcater.com](https://www.ezcater.com); or direct at [catering.noahs.com](https://catering.noahs.com)) | 2+ dozen bagels & shmear + group coffee boxes | ~$300 |
+| Lunch restock | Costco via Instacart ([costco.com/same-day](https://www.costco.com/same-day) / [instacart.com](https://www.instacart.com)) | Chicken wraps, sandwich platters, salads, hummus + pita, salsa/guac, fruit, cookies, foil pans | ~$570 |
+| Dinner | Supreme Pizza (ours; any solid local shop works) — 17 XL 18" pies, ordered via [Toast online ordering](https://order.toasttab.com/online/supreme-pizza-3348-18th-st) | Ratio that worked: ~1/3 cheese, ~1/5 margherita, ~1/2 pepperoni. One XL per 4–5 people | ~$620 |
 
 *Pizza on the big build night is not a cliché, it's correct: zero serving overhead, eats fine at a desk at 9pm, and the order is one phone call.*
 
 ### Demo day
 | What | Vendor | Order shape | ~Cost |
 |---|---|---|---|
-| Breakfast (bigger — everyone shows for demos) | Noah's Bagels | 6 dozen bagels & shmear + 8 group coffee boxes (two roasts) | ~$415 |
+| Breakfast (bigger — everyone shows for demos) | Noah's Bagels catering (ordered via [ezcater.com](https://www.ezcater.com); or direct at [catering.noahs.com](https://catering.noahs.com)) | 6 dozen bagels & shmear + 8 group coffee boxes (two roasts) | ~$415 |
 
 *Demo-day food ends at breakfast + leftovers. The event ends mid-afternoon; don't order a lunch that outlives the room.*
 
